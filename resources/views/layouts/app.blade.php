@@ -42,11 +42,11 @@
                         <!-- Authentication Links -->
 
                         @auth
-                            <li class="dropdown dropdown-notification nav-item  dropdown-notifications">
+                            <li class="dropdown dropdown-notification nav-item dropdown-notifications">
                                 <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
                                     <i class="fa fa-bell"> </i>
                                     <span
-                                        class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow   notif-count"
+                                        class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow notif-count"
                                         data-count="9">9</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
@@ -55,7 +55,7 @@
                                             <span class="grey darken-2 text-center"> الرسائل</span>
                                         </h6>
                                     </li>
-                                    <li class="scrollable-container ps-container ps-active-y media-list w-100">
+                                    <li class="  ps-container ps-active-y media-list w-100">
                                         <a href="">
                                             <div class="media">
                                                 <div class="media-body">
@@ -118,6 +118,7 @@
             @yield('content')
         </main>
     </div>
+
     <script
         src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -129,8 +130,10 @@
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('f3e8e0dcd471982775c0', {
-    cluster: 'mt1'
+    //cluster: 'mt1'
+     encrypted: false
     });
 </script>
+    <script src="{{asset('js/pusherNotifications.js')}}"></script>
 </body>
 </html>

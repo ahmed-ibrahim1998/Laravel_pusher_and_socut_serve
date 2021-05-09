@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewNotification;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -36,10 +37,20 @@ class HomeController extends Controller
     public function saveComment(Request $request) {
         // dd($request);
         Comment::create([
-            'post_id' => $request ->post_id,
             'user_id' => Auth::id(),
+//            'user_name' => Auth::user()->name,
             'comment' => $request ->post_content,
+            'post_id' => $request ->post_id,
      ]);
+
+        $data =[
+            'user_id' => Auth::id(),
+            'user_name'  => Auth::user() -> name,
+            'comment' => $request -> post_content,
+            'post_id' =>$request -> post_id ,
+        ];
+
+        event(new NewNotification($data));
         return redirect() -> back() -> with(['success'=> 'تم اضافه تعليقك بنجاح ']);
     }
 }
